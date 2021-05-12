@@ -4,23 +4,23 @@ var express = require('express'),
 
 // ROOT 
 //// PATH: http://raspberrypi.local:8080/ui/
-router.use('/', express.static(path.join(__dirname, '../..',  '/src/public-views/ui')));
+router.use('/', express.static(path.join(__dirname, '../',  '/public-views/ui')));
 
 
 
 // SENSORS
 //// PATH: http://raspberrypi.local:8080/ui/sensors
-router.use('/sensors', express.static(path.join(__dirname, '../..',  '/src/public-views/sensors')));
+router.use('/sensors', express.static(path.join(__dirname, '../',  '/public-views/sensors')));
 //// PATH: http://raspberrypi.local:8080/ui/sensors/[humidity, temperature, ultra, blinkingLed]
-router.use('/sensors' + '/:sensor', express.static(path.join(__dirname, '../..',  '/src/public-views/sensor')));
+router.use('/sensors' + '/:sensor', express.static(path.join(__dirname, '../',  '/public-views/sensor')));
 
 
 
 // actuators
 //// PATH: http://raspberrypi.local:8080/ui/actuators
-router.use('/actuators', express.static(path.join(__dirname, '../..',  '/src/public-views/actuators')));
+router.use('/actuators', express.static(path.join(__dirname, '../',  '/public-views/actuators')));
 //// PATH: http://raspberrypi.local:8080/ui/actuators/[1, 2]
-router.use('/actuators/leds' + '/:actuator', express.static(path.join(__dirname, '../..',  '/src/public-views/actuator')));
+router.use('/actuators/leds' + '/:actuator', express.static(path.join(__dirname, '../',  '/public-views/actuator')));
 
 
 

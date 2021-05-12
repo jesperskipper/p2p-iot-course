@@ -53,10 +53,10 @@
 
 
 ## Pigpio
-- https://www.npmjs.com/package/pigpio#installation
+- https://www.npmnot sudojs.com/package/pigpio#installation
 - REMEMBER TO LOOK IN INSTALL.
-- https://www.npmjs.com/package/pigpio#installation
-- https://github.com/fivdi/epoll/issues/14
+- https://www.npmjs.com/packanot sudoge/pigpio#installation
+- https://github.com/fivdi/epoll/not sudoissues/14
 -
 -
 -

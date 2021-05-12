@@ -1,10 +1,10 @@
 {
   "name": "iot-project",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "StormSkip AU IOT project",
-  "main": "src/app.js",
+  "main": "app.js",
   "scripts": {
-    "start": "node src/app.js",
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Anders Stormer & Jesper Skipper",
@@ -14,6 +14,7 @@
     "body-parser": "~1.13.2",
     "path": "^0.12.7",
     "cors": "^2.7.1",
+    "chalk": "^2.4.2",
     "node-json2html": "^1.0.0",
     "object-observer": "^1.0.1",
     "ws": "^6.0.0"
