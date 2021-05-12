@@ -10,60 +10,50 @@ git clone https://gitlab.au.dk/p2p/iot-project.git
 ```
 
 
-Next checkout branch `milestone3`:
+Next checkout branch `easypong`:
 
 ```
-git checkout milestone3
+git checkout easypong
 ```
 
-Now the code is ready to run either manually or using docker.
+Now the there is 2 folders `html-dashboard` and `rpi-server`
 
 
+## HTML dashboard (local)
 
-# Milestone 3
 
-## Cloud 
-
-### WebApp
-
-- https://iot-cloud-webapp.azurewebsites.net/
-
-**Build web app**
+**Build dashboard**
 
 ``` bash
- $ cd milestone3-Cloud/
- # Locally
+ $ cd html-dashboard/
  $ npm install
- $ npm start
- # locally docker
- $ docker build -t fancy-pants/cloud-iot-assignment . 
- $ docker run -p -d 5000:5000 fancy-pants/cloud-iot-assignment:latest 
- # to cloud replace "AlfaP2PIotContainer" with your registry
- $ az acr build --file Dockerfile --registry AlfaP2PIotContainer --image iot-cloud-project . 
+ $ npm start 
 ```
 
-## Pi
-
-### Pi-MQTT-Server
+Now go to `http://localhost:5000/`
 
 
-**Build Pi server**
+## Python server (on Rpi)
+
+**Requirements python version**
+You need a python version above `3.6` to run code below.
+
+**Build Pi dependicies**
 
 ``` bash
- $ cd milestone3-Pi/
- # Locally
- $ npm install
- $ npm start
- # locally docker
- $ docker build -t fancy-pants/pi-iot-assignment . 
- $ docker run -d --privileged fancy-pants/pi-iot-assignment:latest 
+ $ cd rpi-server/
+ $ pip install azure.iot.device
+ $ pip install azure-iothub-device-client
+ $ pip install azure
+ $ pip install pychalk
+ $ pip install cv2
+ $ pip install RPi.GPIO
 ```
 
-## Testing
-### Test your Pi 
+To run the server: `python3 python-server-new.py`
+
+
 **Primary connection String**
 
-`'HostName=Alfa-P2P.azure-devices.net;DeviceId=iot-p2p-device-alfa-test;SharedAccessKey=k0k8+e2Bkq9tFNlCBfH4fjFRm5kopZJlMANTOWdq0hY='`
+`'HostName=ProjectHub.azure-devices.net;DeviceId=MyPythonDevice;SharedAccessKey=h5EkuDGBCk/H+fEsKnfwT0M0n+HSJ7VGO5J1vMSfmkw='`
 
-## REST endpoints & possible HTTP
-- root-endpoint: `https://iot-cloud-webapp.azurewebsites.net/`
