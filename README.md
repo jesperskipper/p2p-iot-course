@@ -10,50 +10,59 @@ git clone https://gitlab.au.dk/p2p/iot-project.git
 ```
 
 
-Next checkout branch `easypong`:
+Next checkout branch `milestone1`:
 
 ```
-git checkout easypong
+git checkout milestone1
 ```
 
-Now the there is 2 folders `html-dashboard` and `rpi-server`
+Now the code is ready to run either manually or using docker.
 
 
-## HTML dashboard (local)
+## Running the application manually
 
+The application consists of a single file `src/app.js`. It can be started from
+the application directory with the `node` command:
 
-**Build dashboard**
-
-``` bash
- $ cd html-dashboard/
- $ npm install
- $ npm start 
+```
+$ node src/app.js
 ```
 
-Now go to `http://localhost:5000/`
+The `package.json` file is set up to include a `start` script and express + sensor
+package dependencies. Scripts provide a more convinient way to start the application
+using `npm`:
 
-
-## Python server (on Rpi)
-
-**Requirements python version**
-You need a python version above `3.6` to run code below.
-
-**Build Pi dependicies**
-
-``` bash
- $ cd rpi-server/
- $ pip install azure.iot.device
- $ pip install azure-iothub-device-client
- $ pip install azure
- $ pip install pychalk
- $ pip install cv2
- $ pip install RPi.GPIO
+```
+$ npm start
 ```
 
-To run the server: `python3 python-server-new.py`
+Once the code running visit:
+```
+[ip-of-rasp]/8080
+```
+From here it is possible to view the states of the components by using the static html.
 
 
-**Primary connection String**
+## Building the docker image
 
-`'HostName=ProjectHub.azure-devices.net;DeviceId=MyPythonDevice;SharedAccessKey=h5EkuDGBCk/H+fEsKnfwT0M0n+HSJ7VGO5J1vMSfmkw='`
+To build the image, use `docker build` inside the application directory:
 
+```
+$ docker build -t fancy-pants/iot-assignment .
+```
+
+**Important**: this must be done on a Raspberry Pi with working internet connection.
+
+## Running the docker image
+
+```
+$ docker run -d -p 8080:8080 --privileged fancy-pants/iot-assignment
+```
+
+## Inspecting application
+
+- Go to url [raspberrypi.local:8080](http://raspberrypi.local:8080/) or `LOCAL_RASPBERRY_PI_IP` on port `8080`
+- `index.html` page should load and you can click on the three api entries
+1. `/api/led`
+2. `/api/utra`
+3. `/api/temp-hum`
