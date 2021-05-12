@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+  <title>Sensors Overview</title>
+  <script type="text/javascript">
+
+    console.log(window.location.pathname)
+    let path = window.location.pathname.split('/')
+    viewName = path[path.length -1 ] 
+    console.log(viewName)
+
+  
+  </script>
+
+  <style class="anchorjs"></style>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.0/css/bootstrap-toggle.min.css" rel="stylesheet">
+  <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.0/js/bootstrap-toggle.min.js"></script>
+
+  <!-- Documentation extras -->
+  <link href="./css/sensor.min.css" rel="stylesheet">
+
+</head>
+
+
+<body>
+
+  <!-- Docs page layout -->
+  <div class="bs-docs-header" id="content" tabindex="-1">
+    <div class="container">
+      <h1>Sensors Overview</h1>
+      <p>Navigate to different sensors.</p>
+      <hr>
+    </div>
+
+  </div>
+
+  <div class="container bs-docs-container">
+      <h2>Views</h2>
+    <!-- 
+    <div class="panel-group" id="accordion">
+      <div class="panel panel-default" id="panel2">
+        <div class="panel-heading">
+          <h4 class="panel-title">DEBUG (Show HTTP Response)</h4>
+        </div>
+        <div id="response" class="panel-body">
+          <pre></pre>
+        </div>
+      </div>
+    </div> -->
+    <hr> 
+
+    <div class="row">
+      <div class="col-md-9" id="the-list" role="main">
+        <div class="bs-docs-section">
+
+          <h3 id='sensor1'>Temperature Sensor</h3>
+          <h5><a id='sensor1Nav' href="/ui/sensors/temperature">/temperature</a></h5>
+          <hr>
+
+          <h3 id='sensor2'>Humidity Sensor</h3>
+          <h5><a id='sensor2Nav' href="/ui/sensors/humidity">/humidity</a></h5>
+          <hr>
+
+          <h3 id='sensor3'>Ultra Proximity Sensor</h3>
+          <h5><a id='sensor3Nav' href="/ui/sensors/ultra">/ultra</a></h5>
+          <hr>
+
+          <h3 id='sensor4'>LED Blinking</h3>
+          <h5><a id='sensor4Nav' href="/ui/sensors/blinkingLed">/blinkingLed</a></h5>
+          <hr>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Bootstrap core JavaScript
+================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+
+</body>
+
+</html>
+

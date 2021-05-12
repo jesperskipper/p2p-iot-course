@@ -4,7 +4,7 @@
   "description": "StormSkip AU IOT project",
   "main": "src/app.js",
   "scripts": {
-    "start": "node src/app-v2.js",
+    "start": "node src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Anders Stormer & Jesper Skipper",
@@ -12,7 +12,11 @@
   "dependencies": {
     "express": "^4.16.3",
     "body-parser": "~1.13.2",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "cors": "^2.7.1",
+    "node-json2html": "^1.0.0",
+    "object-observer": "^1.0.1",
+    "ws": "^6.0.0"
   },
   "optionalDependencies": {
     "node-dht-sensor": "^0.0.34",
