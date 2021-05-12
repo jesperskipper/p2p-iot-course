@@ -1,0 +1,4 @@
+azure==4.0.0
+azure-iot-device==2.0.0rc12
+azure-iothub-device-client==1.4.6
+pychalk==2.0.1

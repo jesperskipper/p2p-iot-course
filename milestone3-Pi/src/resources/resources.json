@@ -1,0 +1,55 @@
+{
+	"pi": {
+		"name": "WoT Pi",
+		"description": "A simple WoT-connected Raspberry PI for the WoT book.",
+		"port": 8080,
+		"sensors": {
+			"temperature": {
+				"name": "Temperature Sensor",
+				"description": "An ambient temperature sensor.",
+				"unit": "celsius",
+				"value": 0,
+				"gpio": 12,
+				"frequency": 5000
+			},
+			"humidity": {
+				"name": "Humidity Sensor",
+				"description": "An ambient humidity sensor.",
+				"unit": "%",
+				"value": 0,
+				"gpio": 12,
+				"frequency": 5000
+			},
+			"ultra": {
+				"name": "Ultra Proximity Sensor",
+				"description": "A proximity sensor.",
+				"value": 0,
+				"gpioOut": 23,
+				"gpioIn": 24,
+				"gpio": [24, 23]
+			},
+			"blinkingLed": {
+				"name": "LED Blinking",
+				"description": "A blinking led.",
+				"value": 0,
+				"gpio": 4
+			}
+		},
+		"actuators": {
+			"leds": {
+				"1": {
+					"name": "LED 1",
+					"description": "A controllable led.",
+					"value": false,
+					"gpio": 2
+				},
+				"2": {
+					"name": "LED 2",
+					"description": "A controllable led.",
+					"value": false,
+					"gpio": 22
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <title>Sensor</title>
+
+  <!-- Documentation extras -->
+  <link href="./css/sensor.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- Docs page layout -->
+  <div class="bs-docs-header" id="content" tabindex="-1">
+    <div class="container">
+      <h1 id='title'>Sensor</h1>
+      <p>View data on sensor.</p>
+    </div>
+  </div>
+
+  <div class="container bs-docs-container">
+    <div class="row">
+      <div class="col-md-9" id="the-list" role="main">
+        <div class="bs-docs-section">
+
+          <h2 id="sensor-name">Humidity TODO!</h2>
+          <hr>
+          <!-- OUT COMMENT ON/OFF!!-->
+          <!-- <h5>Response</h5> -->
+          <h3>JSON response</h3>
+
+          <div class="panel-group" id="accordion">
+            <div class="panel panel-default" id="panel2">
+              <div class="panel-heading">
+                <h4 class="panel-title">DEBUG (Show HTTP Response)</h4>
+              </div>
+              <div id="response" class="panel-body">
+                <pre></pre>
+              </div>
+            </div>
+          </div>
+
+          <hr>
+          <h3>Properties</h3>
+
+          <ul class="list-group">
+            <li class="list-group-item">
+              <span id="value-name" class="badge">"sensor"</span>
+              Name
+            </li>
+            <li class="list-group-item">
+              <span id="value-description" class="badge">"description"</span>
+              Description
+            </li>
+            <li class="list-group-item">
+              <span id="value-value" class="badge">0</span>
+              Value
+            </li>
+            <li class="list-group-item">
+              <span id="value-gpio" class="badge">0</span>
+              gpio
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Footer ================================================== -->
+  <footer class="bs-docs-footer" role="contentinfo">
+    <div class="container">
+
+      <p>Built with the Bootstrap and WOT by Anders & Jesper.</p>
+
+    </div>
+  </footer>
+
+
+  <!-- Bootstrap core JavaScript
+================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+
+  <script>
+    $(document).ready(function () {
+      console.log("PATH:" + window.location.pathname)
+      var path = window.location.pathname.split('/');
+      console.log("PATH var:" + path)
+      viewName = path[path.length - 2] // creates this array: ,ui,sensors,temperature, go 2 back.
+
+      console.log("VIEW:" + viewName)
+      $('#sensor-name').html(viewName.substring(0, 1).toUpperCase() + viewName.substring(1))
+
+      function updateView(data) {
+        var value = data.value;
+        console.log("VAL " + value);
+        console.log("NAME " + data.name);
+        if (data.name == "Temperature Sensor" || data.name == "Humidity Sensor") {
+          var unit = data.unit;
+          value = value + ' ' + unit;
+        }
+
+        if (data.name == "LED Blinking") {
+          value = value === 1 ? 'on' : 'off';
+        }
+
+        if (data.name == "Ultra Proximity Sensor") {
+          data.gpio = "[" + data.gpio[0] + ", " + data.gpio[1] + "]";
+        }
+
+        $('#response pre').html(JSON.stringify(data));
+        $('#title').html(data.name);
+        $('#sensor-name').html(data.name);
+        $('#value-name').html(data.name);
+        $('#value-description').html(data.description);
+        $('#value-value').html(value);
+        $('#value-gpio').html(data.gpio);
+      }
+
+
+    
+      var ajaxUrl = 'http://raspberrypi.local:8080/pi/sensors/' + viewName;
+      $.ajax({
+        url: ajaxUrl,
+        dataType: 'json',
+        type: 'GET',
+        contentType: 'application/json',
+        processData: false,
+        success: function (data, textStatus, jQxhr) {
+          updateView(data)  //Updates the view
+        },
+        error: function (jqXhr, textStatus, errorThrown) {
+          console.log(errorThrown);
+        }
+      });
+
+      var wsUrl = 'ws://raspberrypi.local:8080/pi/sensors/' + viewName;
+      var socket = new WebSocket(wsUrl);
+      socket.onmessage = function (message) { 
+        var content = JSON.parse(message.data);
+        console.log('Property update : ', content.name); 
+
+        updateView(content) ///Update view
+
+      };
+      socket.onerror = function (error) {
+        console.log('An error occurred while trying to connect to a WebSocket!');
+        console.log(error);
+      };
+    });
+  </script>
+
+
+  <style class="anchorjs"></style>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.0/css/bootstrap-toggle.min.css" rel="stylesheet">
+  <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.0/js/bootstrap-toggle.min.js"></script>
+
+
+</body>
+
+</html>

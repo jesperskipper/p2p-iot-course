@@ -1,0 +1,27 @@
+{
+  "name": "iot-project",
+  "version": "2.0.0",
+  "description": "StormSkip AU IOT project",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Anders Stormer & Jesper Skipper",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.3",
+    "body-parser": "~1.13.2",
+    "path": "^0.12.7",
+    "cors": "^2.7.1",
+    "chalk": "^2.4.2",
+    "node-json2html": "^1.0.0",
+    "object-observer": "^1.0.1",
+    "ws": "^6.0.0"
+  },
+  "optionalDependencies": {
+    "node-dht-sensor": "^0.0.34",
+    "onoff": "^3.2.2",
+    "pigpio": "^1.2.3"
+  }
+}

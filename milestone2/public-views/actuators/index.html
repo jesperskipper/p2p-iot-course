@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+  <title>Sensors Overview</title>
+  <script type="text/javascript">
+
+    console.log(window.location.pathname)
+    let path = window.location.pathname.split('/')
+    viewName = path[path.length -1 ] 
+    console.log(viewName)
+
+  
+  </script>
+
+  <style class="anchorjs"></style>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.0/css/bootstrap-toggle.min.css" rel="stylesheet">
+  <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.0/js/bootstrap-toggle.min.js"></script>
+
+  <!-- Documentation extras -->
+  <link href="./css/sensor.min.css" rel="stylesheet">
+
+</head>
+
+
+<body>
+
+  <!-- Docs page layout -->
+  <div class="bs-docs-header" id="content" tabindex="-1">
+    <div class="container">
+      <h1>Actuators Overview</h1>
+      <p>Navigate to different actuators.</p>
+      <hr>
+    </div>
+
+  </div>
+
+  <div class="container bs-docs-container">
+      <h2>Views</h2>
+    <hr> 
+
+    <div class="row">
+      <div class="col-md-9" id="the-list" role="main">
+        <div class="bs-docs-section">
+
+          <h3 id='led1'>LED 1</h3>
+          <h5><a id='sensor1Nav' href="/ui/actuators/leds/1">/leds/1</a></h5>
+          <hr>
+
+          <h3 id='led2'>LED 2</h3>
+          <h5><a id='sensor2Nav' href="/ui/actuators/leds/2">/leds/2</a></h5>
+          <hr>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Bootstrap core JavaScript
+================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <!-- Footer ================================================== -->
+  <footer class="bs-docs-footer" role="contentinfo">
+      <div class="container">
+    
+        <p>Built with the Bootstrap and WOT by Anders & Jesper.</p>
+    
+      </div>
+</body>
+
+</html>
+
